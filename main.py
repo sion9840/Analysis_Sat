@@ -49,7 +49,7 @@ for i in range(1, problem_len):
 st.title("Analysis Sat")
 st.header("수능을 분석한 결과를 보여주는 사이트")
 
-st.write("\n\n\n\n\n\n")
+st.write("")
 
 st.write("년도별 수능 답 번호")
 df_ea = pd.DataFrame(exam_answer_values, index=exam_answer_keys, columns=np.arange(1, problem_len+1))
