@@ -47,9 +47,10 @@ for i in range(1, problem_len):
     ax.plot([0, exam_len+1], [line_fitter.predict([[0]]), line_fitter.predict([[exam_len+1]])])
 
 st.title("Analysis Sat")
-st.subheader("수능을 분석한 결과를 보여주는 사이트")
+st.header("수능을 분석한 결과를 보여주는 사이트")
+st.info("분석 수능 과목 : 수학")
 
-st.write("")
+st.markdown('''---''')
 
 st.write("년도별 수능 답 번호")
 df_ea = pd.DataFrame(exam_answer_values, index=exam_answer_keys, columns=np.arange(1, problem_len+1))
