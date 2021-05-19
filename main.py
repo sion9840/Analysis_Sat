@@ -26,6 +26,7 @@ print(exam_answer_values)
 print(problem_answer)
 print(problem_answer_per)
 
+"""
 for i in range(1, problem_len):
     ax = fig.add_subplot(h, w, i+1)
     ax.plot(exam_answer_keys, problem_answer[i], 'ro')
@@ -37,6 +38,7 @@ for i in range(1, problem_len):
     line_fitter = LinearRegression()
     line_fitter.fit(np.arange(1, exam_len+1).reshape(-1, 1), problem_answer[i])
     ax.plot([0, exam_len+1], [line_fitter.predict([[0]]), line_fitter.predict([[exam_len+1]])])
+"""
 
 st.title("Analysis Sat")
 st.header("수능을 분석한 결과를 보여주는 사이트")
