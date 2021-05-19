@@ -49,7 +49,7 @@ for i in range(1, problem_len):
 st.title("Analysis Sat")
 st.header("수능을 분석한 결과를 보여주는 사이트")
 
-df_ea = pd.DataFrame(exam_answer)
+df_ea = pd.DataFrame(exam_answer_values, index=exam_answer_keys, columns=np.arange(1, problem_len+1))
 st.dataframe(df_ea)
 
 #plt.show()
