@@ -43,7 +43,7 @@ for i in range(problem_len):
     line2 = np.array([line_fitter.predict([[i]]) for i in range(exam_len)])
 
     a, b = 0, 0
-    for j in range(exam_len):
+    for j in range(exam_len*2):
         if j % 2 == 0:
             line[j] = line1[a]
             a += 1
@@ -52,7 +52,7 @@ for i in range(problem_len):
             b += 1
 
     chart_data = pd.DataFrame(
-        line,
+        line.reshape(2, exam_len),
         columns=['problem answer', 'predict line']
         )
    
