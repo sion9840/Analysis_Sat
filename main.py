@@ -56,4 +56,6 @@ st.write("년도별 수능 답 번호")
 df_ea = pd.DataFrame(exam_answer_values, index=exam_answer_keys, columns=np.arange(1, problem_len+1))
 st.dataframe(df_ea)
 
+st.line_chart([[1,2,3,4],[3,4,5,6]])
+
 #plt.show()
