@@ -47,7 +47,7 @@ for i in range(1, problem_len):
     ax.plot([0, exam_len+1], [line_fitter.predict([[0]]), line_fitter.predict([[exam_len+1]])])
 
 st.title("Analysis Sat")
-st.header("수능을 분석한 결과를 보여주는 사이트")
+st.subheader("수능을 분석한 결과를 보여주는 사이트")
 
 st.write("")
 
