@@ -52,7 +52,7 @@ for i in range(problem_len):
             b += 1
 
     chart_data = pd.DataFrame(
-        line.reshape(2, exam_len),
+        line.reshape(exam_len, 2),
         columns=['problem answer', 'predict line']
         )
    
