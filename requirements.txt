@@ -2,3 +2,4 @@ matplotlib==3.4.2
 numpy==1.20.3
 sklearn==0.0
 pandas==1.2.4
+math==0.0.1

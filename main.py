@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import streamlit as st
 import pandas as pd
+import math
 
 st.title("Analysis Sat")
 st.header("수능을 분석한 결과를 보여주는 사이트")
@@ -41,7 +42,20 @@ for i in range(problem_len):
     line = np.arange(exam_len*2)
     line1 = problem_answer[i]
     line2 = np.array([line_fitter.predict([[i]]) for i in range(exam_len)])
+    way = "일정"
 
+    alpha = line_fitter.predict([[exam_len-1]]) - line_fitter.predict([[0]])
+    if alpha > 0:
+        way = "상승"
+    elif alpha < 0:
+        way = "하강"
+
+    ppr = math.floor(line_fitter.predict([[exam_len]]))
+    if ppr < 1:
+        ppr = 1
+    elif ppr > choice_len:
+        ppr = choice_len
+        
     a, b = 0, 0
     for j in range(exam_len*2):
         if j % 2 == 0:
@@ -55,6 +69,6 @@ for i in range(problem_len):
         line.reshape(exam_len, 2),
         columns=['problem answer', 'predict line']
         )
-   
-    st.text(str(i+1) + "번 문제")
+    
+    st.text(str(i+1) + "번 문제 : " + "답 " + str(ppr) + "번 추천 (이유 : " + "예측 선이 " + str(ppr) + "번 쪽으로 " + way + "하기 때문이다)")
     st.line_chart(chart_data)
