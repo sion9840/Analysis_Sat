@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+import streamlit as st
+import pandas as pd
 
 problem_len = 30
 choice_len = 6
@@ -44,4 +46,10 @@ for i in range(1, problem_len):
     line_fitter.fit(np.arange(1, exam_len+1).reshape(-1, 1), problem_answer[i])
     ax.plot([0, exam_len+1], [line_fitter.predict([[0]]), line_fitter.predict([[exam_len+1]])])
 
-plt.show()
+st.title("Analysis Sat")
+st.header("수능을 분석한 결과를 보여주는 사이트")
+
+df_ea = pd.DataFrame(exam_answer)
+st.dataframe(df_ea)
+
+#plt.show()
