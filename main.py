@@ -26,14 +26,6 @@ print(exam_answer_values)
 print(problem_answer)
 print(problem_answer_per)
 
-fig = plt.figure()
-ax = fig.add_subplot(h, w, 1)
-ax.plot(np.arange(1, problem_len+1), problem_answer_per, 'ro')
-ax.axis([0, problem_len+1, 0, choice_len+1])
-ax.set_title('analysis problem answer per')
-ax.set_xlabel('problem num')
-ax.set_ylabel('answer num')
-
 for i in range(1, problem_len):
     ax = fig.add_subplot(h, w, i+1)
     ax.plot(exam_answer_keys, problem_answer[i], 'ro')
@@ -56,6 +48,8 @@ st.write("년도별 수능 답 번호")
 df_ea = pd.DataFrame(exam_answer_values, index=exam_answer_keys, columns=np.arange(1, problem_len+1))
 st.dataframe(df_ea)
 
-st.line_chart([[1,2,3,4],[3,4,5,6]])
+st.write("문제마다 가장 많이 나오는 답 번호")
+df_ea = pd.DataFrame(problem_answer_per, columns=np.arange(1, problem_len+1))
+st.dataframe(df_ea)
 
 #plt.show()
