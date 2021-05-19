@@ -51,7 +51,7 @@ df_ea = pd.DataFrame(exam_answer_values, index=exam_answer_keys, columns=np.aran
 st.dataframe(df_ea)
 
 st.write("문제마다 가장 많이 나오는 답 번호")
-df_pap = pd.DataFrame([problem_answer_per], columns=np.arange(1, problem_len+1))
+df_pap = pd.DataFrame([problem_answer_per], index=["->"], columns=np.arange(1, problem_len+1))
 st.dataframe(df_pap)
 
 #plt.show()
