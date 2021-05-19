@@ -6,19 +6,29 @@ import math
 
 st.title("Analysis Sat")
 st.header("수능을 분석한 결과를 보여주는 사이트")
-st.info("분석 수능 과목 : 수학")
+st.info("분석 수능 년도 : 2017년 ~ 2020년, 분석 수능 과목 : 수학, 분석 수능 시험 갯수 : 16개")
 
 st.markdown('''---''')
 
-problem_len = 30
+problem_len = 21
 choice_len = 6
 exam_answer = {
-    "2015" : np.random.randint(low=1, high=choice_len+1, size=problem_len),
-    "2016" : np.random.randint(low=1, high=choice_len+1, size=problem_len),
-    "2017" : np.random.randint(low=1, high=choice_len+1, size=problem_len),
-    "2018" : np.random.randint(low=1, high=choice_len+1, size=problem_len),
-    "2019" : np.random.randint(low=1, high=choice_len+1, size=problem_len),
-    "2020" : np.random.randint(low=1, high=choice_len+1, size=problem_len),
+    "2017-1" : np.array([5,2,5,4,3,5,1,1,2,3,4,4,3,1,4,2,2,3,1,5,4]),
+    "2017-2" : np.array([5,2,5,2,3,1,1,5,4,3,4,4,3,1,4,2,2,3,1,5,4]),
+    "2017-3" : np.array([2,3,1,5,2,5,4,3,2,5,1,1,3,4,1,4,3,4,2,5,4]),
+    "2017-4" : np.array([2,3,1,5,2,1,4,3,4,5,5,1,3,4,1,2,3,4,2,5,4]),
+    "2018-1" : np.array([5,4,3,3,2,2,4,1,2,5,3,1,3,5,4,4,3,2,1,5,4]),
+    "2018-2" : np.array([5,4,3,3,2,2,2,1,2,5,3,5,3,1,4,4,3,4,1,5,4]),
+    "2018-3" : np.array([2,4,1,1,3,5,5,2,1,3,4,5,2,1,5,3,5,4,2,3,2]),
+    "2018-4" : np.array([2,4,5,1,3,1,5,2,1,3,4,1,2,5,5,3,5,4,2,3,2]),
+    "2019-1" : np.array([5,3,4,2,3,1,3,1,5,4,4,2,1,4,5,2,1,2,3,5,4]),
+    "2019-2" : np.array([5,3,4,2,3,1,3,1,5,2,4,2,5,4,1,4,1,2,3,5,4]),
+    "2019-3" : np.array([2,5,3,3,1,2,4,2,5,4,3,2,1,5,1,4,4,3,1,5,1]),
+    "2019-4" : np.array([2,5,3,3,1,4,2,2,5,2,3,4,1,5,1,4,4,3,1,5,1]),
+    "2020-1" : np.array([5,3,2,5,4,3,2,5,3,4,4,2,1,4,2,3,5,1,5,1,5]),
+    "2020-2" : np.array([5,3,2,5,4,3,4,1,3,2,4,2,5,4,2,3,5,1,5,1,5]),
+    "2020-3" : np.array([2,4,3,5,2,4,3,1,1,3,4,1,5,3,4,4,1,5,1,2,4]),
+    "2020-4" : np.array([2,4,3,5,4,4,3,1,1,3,4,1,5,3,4,2,1,1,5,2,4])
 }
 exam_answer_keys = np.array(list(exam_answer.keys()))
 exam_answer_values = np.array(list(exam_answer.values()))
@@ -34,7 +44,7 @@ st.write("문제마다 가장 많이 나오는 답 번호")
 df_pap = pd.DataFrame([problem_answer_per], index=["->"], columns=np.arange(1, problem_len+1))
 st.dataframe(df_pap)
 
-st.write("문제마다 이번 수능에 찍으면 좋은 번호")
+st.write("문제마다 이번 수능에서 찍으면 확률적으로 좋은 답 번호")
 for i in range(problem_len):
     line_fitter = LinearRegression()
     line_fitter.fit(np.arange(1, exam_len+1).reshape(-1, 1), problem_answer[i])
