@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import math
 
-st.title("Analysis Sat")
+st.title("수능 분석")
 st.header("수능을 분석한 결과를 보여주는 사이트")
 st.info("분석 수능 년도 : 2017년 ~ 2020년, 분석 수능 과목 : 수학, 분석 수능 시험 갯수 : 16개")
 
